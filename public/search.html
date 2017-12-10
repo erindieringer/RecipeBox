@@ -1,0 +1,58 @@
+<html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+      <link rel="stylesheet" href="../css/main.css">
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <script src="js/search.js"></script>
+
+       <nav>
+          <div class="nav-wrapper">
+            <a href="/home" class="brand-logo">RecipeBox</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="/my-recipes"><b>My Recipes</b></a></li>
+              <li><a href=""><b>Grocery Lists</b></a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+              <li><a href="/my-recipes">My Recipes</a></li>
+              <li><a href="">Grocery Lists</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </div>
+        </nav>
+        <br>
+        <br>
+      <div class="container" align="center">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="search-input" type="text" class="validate">
+            <label for="search">Search by <b>dish name</b> or <b>ingredients</b> </label>
+              <button class="btn waves-effect waves-light" type="submit" name="action" id="search-btn">Search
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
+        <div class="row" id="results">
+          <div class="col s12"></div>
+          <p id="response-text"><p>
+          </div>
+        </div>
+
+      </div>
+
+    </body>
+
+
+  </html>

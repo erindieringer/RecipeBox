@@ -2,7 +2,7 @@ $(function() {
 	$("#signup").click(function(e){
 		var username = $("#username").val();
 		var password = $("#password").val();
-		$.post('/signup', { username: username, password:password }, 
+		$.post('https://erin328-recipe-box.herokuapp.com/signup', { username: username, password:password }, 
 		    function(returnedData){
 		        localStorage.user = returnedData._id
 		        createList(returnedData._id); // Create empty grocery list for newly signed up user
@@ -17,7 +17,7 @@ $(function() {
 	$("#login").click(function(e){
 		var username = $("#username").val();
 		var password = $("#password").val();
-		$.post('/login', { username: username, password:password }, 
+		$.post('https://erin328-recipe-box.herokuapp.com/login', { username: username, password:password }, 
 		    function(returnedData){
 		          localStorage.user = returnedData._id
 		          window.location.replace("/home");
@@ -27,7 +27,7 @@ $(function() {
 	});
 
 	function createList(userId){
-		$.post('/lists/'+ userId, {}, 
+		$.post('https://erin328-recipe-box.herokuapp.com/lists/'+ userId, {}, 
 		    function(returnedData){
 		}).fail(function(){
 		       

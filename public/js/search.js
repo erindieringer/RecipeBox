@@ -4,7 +4,7 @@ $(function() {
 	});
 	var appID = "7d320ce9";
 	var appKey = "426ca17f781088f084e9d7993a5d64e6";
-	var baseURL = "http://api.yummly.com/v1/api/recipes?_app_id=7d320ce9&_app_key=426ca17f781088f084e9d7993a5d64e6&q=" ;
+	var baseURL = "https://api.yummly.com/v1/api/recipes?_app_id=7d320ce9&_app_key=426ca17f781088f084e9d7993a5d64e6&q=" ;
 	var user = localStorage.user;
 	$("#search-btn").click(function(e){
 		var allergyQuery = "allowedCourse[]=";

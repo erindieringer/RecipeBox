@@ -66,12 +66,36 @@ app.get('/my-grocery-list',function(req,res){
   res.sendFile(path.join(__dirname+'/public/list.html'));
 });
 
-var mlab =process.env.MONGODB_URI || "mongodb://erindieringer:secret@ds113746.mlab.com:13746/hw15"
-var localDB = "mongodb://localhost/yummly"
+var mlab = process.env.MONGODB_URI || "mongodb://erindieringer:secret@ds113746.mlab.com:13746/hw15"
 
-mongoose.connect(mlab);
+mongoose.connect(mlab, function (error) {
+    if (error) console.error(error);
+    else console.log('mongo connected');
+});
 
-var port = process.env.PORT || 8080;
-app.listen(port);
+// var port = process.env.PORT || 8080;
+// app.listen(port);
 
-app.set('view engine', 'ejs');
+var httpServer = require('http').createServer(app);
+
+/*
+ * Boilerplate for setting up socket.io alongside Express.
+ * If socket.io is not needed, comment out the 2 socket.io lines
+ */
+//var sio =require('socket.io')(httpServer);
+
+// The server socket.io code is in the socketio directory.
+//require('./socketio/serverSocket.js').init(sio);
+
+/*
+ * OpenShift will provide environment variables indicating the IP 
+ * address and PORT to use.  If those variables are not available
+ * (e.g. when you are testing the application on your laptop) then
+ * use default values of localhost (127.0.0.1) and 50000 (arbitrary).
+ */
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+
+httpServer.listen(port, ipaddress, function() {console.log('Listening on '+ipaddress+':'+port);});
+
+

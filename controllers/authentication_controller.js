@@ -96,7 +96,8 @@ exports.init = function(app) {
 	                // res.redirect('/home');
 	                res.send(user);
 	            });
-	        } else {
+	        } else if (err) {
+	        	throw err;
 	            req.session.error = 'Authentication failed, please check your ' + ' username and password.';
 	            res.redirect('/login');
 	        }

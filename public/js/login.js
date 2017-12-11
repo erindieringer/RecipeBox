@@ -20,7 +20,7 @@ $(function() {
 		$.post('https://erin328-recipe-box.herokuapp.com/login', { username: username, password:password }, 
 		    function(returnedData){
 		          localStorage.user = returnedData._id
-		          window.location.replace("/home");
+		          window.location.replace("https://erin328-recipe-box.herokuapp.com/home");
 		}).fail(function(){
 		       alert("Try again, did not work")
 		});

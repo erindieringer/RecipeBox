@@ -66,7 +66,7 @@ app.get('/my-grocery-list',function(req,res){
   res.sendFile(path.join(__dirname+'/public/list.html'));
 });
 
-var mlab = "mongodb://erindieringer:secret@ds113746.mlab.com:13746/hw15"
+var mlab =process.env.MONGODB_URI || "mongodb://erindieringer:secret@ds113746.mlab.com:13746/hw15"
 var localDB = "mongodb://localhost/yummly"
 
 mongoose.connect(mlab);

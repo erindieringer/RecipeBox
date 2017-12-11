@@ -15,7 +15,7 @@
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-      <script src="js/show.js"></script>
+      <script src="js/list.js"></script>
 
       <nav>
         <div class="nav-wrapper">
@@ -34,10 +34,11 @@
         </div>
       </nav>
       <div class="container">
-        <h3> My Recipes </h3>
+        <h3> My Grocery List </h3>
+        <a id ="clear" class="waves-effect waves-light btn red">Clear List</a><br><br>
          <div class="row" id="results">
           <div class="col s12"></div>
-          <p id="response-text"><p>
+          <div id="response-text"></div>
           </div>
         </div>
       </div>

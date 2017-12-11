@@ -1,4 +1,5 @@
 $(function() {
+	var user = localStorage.user;
 	$( document ).ready(function(){
 			$(".button-collapse").sideNav();
 	});
@@ -9,11 +10,19 @@ $(function() {
 	});
 	function addToGrocery(ingredient){
 		console.log(ingredient);
-		// $.post('http://localhost:3000/lists', { items: JSON.stringify(list)}, 
-		//     function(returnedData){
-		//          console.log("sucess");
-		// }).fail(function(){
-		//        console.log("fail");
-		// });
+    	$.ajax({
+    		        type: "PUT",
+    		        url: `/lists/${user}/${ingredient}`,
+    		        data: {},
+    		        success: function(result) {
+    		        	alert(`${ingredient} added to grocery list`);
+    		            console.log(result);
+
+    		        },
+    		        error: function(result) {
+    		            alert("could not add");
+    		            console.log(result);
+    		        }
+    		});
 	}
 });

@@ -7,12 +7,26 @@ $(function() {
 	var baseURL = "http://api.yummly.com/v1/api/recipes?_app_id=7d320ce9&_app_key=426ca17f781088f084e9d7993a5d64e6&q=" ;
 	var user = localStorage.user;
 	$("#search-btn").click(function(e){
+		var allergyQuery = "allowedCourse[]=";
+		var cuisineQuery = "allowedCuisine[]=";
+		var courseQuery = "allowedAllergy[]=";
+		var searchQueryUrl = baseURL + encodeURIComponent($("#search-input").val());
+		if ($("#allergy").val() !== null) {
+			searchQueryUrl += ("&" + allergyQuery + $("#allergy").val());
+		}
+		if ($("#cuisine").val() !== null) {
+			searchQueryUrl += ("&" + cuisineQuery + $("#cuisine").val());
+		}
+		if ($("#course").val() !== null) {
+			searchQueryUrl += ("&" + courseQuery + $("#course").val());
+		}
+
+		console.log(searchQueryUrl);
 		$.ajax({
 		        type: "GET",
-		        url: baseURL + encodeURIComponent($("#search-input").val()),
+		        url: searchQueryUrl,
 		        data: {},
 		        success: function(result) {
-		            // $("#response-text").text(JSON.stringify(result));
 		            handleResults(result["matches"]);
 
 		        },

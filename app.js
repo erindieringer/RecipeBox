@@ -48,12 +48,16 @@ app.get('/my-recipes',function(req,res){
   res.sendFile(path.join(__dirname+'/public/recipes.html'));
 });
 
+app.get('/my-grocery-list',function(req,res){
+  res.sendFile(path.join(__dirname+'/public/list.html'));
+});
+
 var mlab = "mongodb://erindieringer:secret@ds113746.mlab.com:13746/hw15"
 var localDB = "mongodb://localhost/yummly"
 
 mongoose.connect(mlab);
 
-
-app.listen(3000);
+var port = process.env.PORT || 8080;
+app.listen(port);
 
 app.set('view engine', 'ejs');

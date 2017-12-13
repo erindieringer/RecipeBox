@@ -49,21 +49,6 @@ require('./controllers/yummly_controller.js').init(app);
 require('./controllers/authentication_controller.js').init(app);
 
 
-
-
-// app.get('/home',function(req,res){
-//   res.sendFile(path.join(__dirname+'/public/search.html'));
-//   //__dirname : It will resolve to your project folder.
-// });
-
-// app.get('/my-recipes',function(req,res){
-//   res.sendFile(path.join(__dirname+'/public/recipes.html'));
-// });
-
-// app.get('/my-grocery-list',function(req,res){
-//   res.sendFile(path.join(__dirname+'/public/list.html'));
-// });
-
 var mlab = process.env.MONGODB_URI || "mongodb://erindieringer:secret@ds113746.mlab.com:13746/hw15"
 
 mongoose.connect(mlab, function (error) {

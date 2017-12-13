@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 exports.init = function(app) {
 	app.get("/recipes/:user", getRecipeByUser);
 	app.post("/recipes/:user/:name/:id", createRecipe);
-	app.delete("/recipes/:id/:user", deleteRecipe);
+	app.delete("/recipes/:id", deleteRecipe);
 }
 
 // retreives the saved recipe instances for a specfic user 
@@ -38,7 +38,7 @@ createRecipe = function(req, res){
 
 //TODO
 deleteRecipe = function(req, res){
-	Recipe.findOneAndRemove({recipeID: req.body.id}, function(err, user) {
+	Recipe.findOneAndRemove({_id: req.params.id}, function(err, user) {
 	    if (err)
 	      res.send(err);
 	    res.json({ message: 'List successfully deleted' });

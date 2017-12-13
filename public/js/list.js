@@ -2,8 +2,10 @@ $(function() {
 	$( document ).ready(function(){
 		$(".button-collapse").sideNav();
 	});
+	// Current user from local storage
 	var user = localStorage.user;
-	console.log(user)
+
+	// Retreive the grocery list for current user
 	$.ajax({
 		        type: "GET",
 		        url: "/lists/" + user,
@@ -18,6 +20,7 @@ $(function() {
 		        }
 		});
 
+	// Show results on DOM
 	function handleResults(result){
 		var items = result[0].itemList;
 		for(var i=0; i<items.length; i++){
@@ -26,10 +29,12 @@ $(function() {
 		}
 	}
 
+	// Clear the client side view of lists
 	function clearList(){
 		$("#response-text").empty();
 	}
 
+	// Set list to empty in server
 	$("#clear").click(function(e){
 		var retVal = confirm("Are you sure you want to delete the list");
         if( retVal == true ){        
@@ -45,10 +50,6 @@ $(function() {
 			    }
 			});
 		}
-	});
-
-	$(".btn-floating btn-mini waves-effect waves-light red").click(function(e){
-		console.log(this.id);
 	});
 
 

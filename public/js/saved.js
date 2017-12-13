@@ -1,13 +1,17 @@
 $(function() {
 	$( document ).ready(function(){
-			$(".button-collapse").sideNav();
+		$(".button-collapse").sideNav();
 	});
+
+    // Adds ingediernt to current logged in users list
 	$(".btn-floating").click(function(e){
-		// Gets ingredietn text for that button line
+		// Gets ingredident text for that button line
 		var ingredient = $("#p"+this.id ).text();
-        ingredient = ingredient.replace('/', '|');
+        ingredient = ingredient.replace('/', '|'); // must replace or else params will be messed up
 		addToGrocery(ingredient);
 	});
+
+    // Adds item to users list on server side
 	function addToGrocery(ingredient){
         var user = localStorage.user;
 		console.log(ingredient);

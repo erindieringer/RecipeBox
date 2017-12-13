@@ -110,15 +110,15 @@ exports.init = function(app) {
 	});
 
 	// Authorization for all the pages
-	app.get('/home', function (req, res) {
+	app.get('/home', requiredAuthentication, function (req, res) {
 	    res.sendFile(path.join(__dirname+'/../public/search.html'));
 	});
 
-	app.get('/my-recipes', function(req,res){
+	app.get('/my-recipes', requiredAuthentication, function(req,res){
 	  res.sendFile(path.join(__dirname+'/../public/recipes.html'));
 	});
 
-	app.get('/my-grocery-list', function(req,res){
+	app.get('/my-grocery-list', requiredAuthentication, function(req,res){
 	  res.sendFile(path.join(__dirname+'/../public/list.html'));
 	});
 }

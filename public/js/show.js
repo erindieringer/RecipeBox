@@ -1,11 +1,13 @@
 $(function() { 
 	var editMode = false;
+	var user = localStorage.user;
+
 	$( document ).ready(function(){
 		$(".button-collapse").sideNav();
 		$('select').material_select();
 	});
 
-	var user = localStorage.user;
+	// Get saved recipe from user in localStorage
 	$.ajax({
 		        type: "GET",
 		        url: "/recipes/" + user,
@@ -20,6 +22,7 @@ $(function() {
 		        }
 		});
 
+	// Add these results from above to DOM
 	function handleResults(matches){
 		var string = '';
 		for(var i=0; i<matches.length; i++){
@@ -32,6 +35,7 @@ $(function() {
 		$(".delete-button").hide();
 	}
 
+	// If edit is clicked, show delete buttons
 	$("#edit").click(function(){
 		if (editMode === false){
 			editMode = true;
@@ -43,6 +47,8 @@ $(function() {
 			buttonShow();
 		}
 	});
+
+	// Shows the delete buttons
 	function buttonShow(){
 		if (editMode === true){
 			$(".delete-button").show();
@@ -57,6 +63,8 @@ $(function() {
 			$(".delete-button").hide();
 		}
 	}
+
+	// If confirmed delete recipe from server and DOM
 	function deleteRecipe(id){
 			$.ajax({
 		        type: "DELETE",
@@ -75,6 +83,3 @@ $(function() {
 
 });
 
-// onclick of edit button-collapse
-// Delete buttons appear
-// click on delete and they will dissapear

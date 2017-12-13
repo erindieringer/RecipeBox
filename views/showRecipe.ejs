@@ -77,7 +77,7 @@
     		        url: "/recipes/" + user +"/" + "<%= name %>" + "/" + "<%= id %>",
     		        data: {},
     		        success: function(result) {
-    		            console.log(result);
+    		            alert(result.name + " has been saved to your recipes!");
 
     		        },
     		        error: function(result) {

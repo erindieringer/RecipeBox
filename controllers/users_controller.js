@@ -4,11 +4,11 @@ var User = require('../models/users');
 // Routes and methods
 
 exports.init = function(app) {
-	app.get("/users/all", getAllUser);
 	app.get("/users", getOneUser);
 	app.post("/users", createUser);
 }
 
+// Creats a user given a username and password passed in the body
 createUser = function(req, res){
 	var user = new User ({
 		username: req.body.username,
@@ -22,17 +22,7 @@ createUser = function(req, res){
 	});
 }
 
-getAllUser = function(req, res){
-
-	User.find({}, function(err, service) {
-		    if (err)
-		     	res.send(err);
-		  	else 
-		    	res.json(service);
-	});
-	
-}
-
+// Retreives a user 
 getOneUser = function(req, res){
 	User.find({username: req.query.username}, function(err, service) {
 		    if (err)

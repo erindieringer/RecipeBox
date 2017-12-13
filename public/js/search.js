@@ -22,7 +22,8 @@ $(function() {
 		}
 
 		console.log(searchQueryUrl);
-		$.ajax({
+
+	$.ajax({
 		        type: "GET",
 		        url: searchQueryUrl,
 		        data: {},
@@ -37,13 +38,20 @@ $(function() {
 	});
 
 	function handleResults(matches){
+		// Clear result div first 
+		clearResponses();
 		var string = '';
 		for(var i=0; i<matches.length; i++){
 			var recipe = matches[i];
 			var id = recipe.id;
 			var name = recipe.recipeName;
-			$("<div class='col s12' id='result'><a href='../recipe/" + id + "'>" + name +"</a></div>").appendTo("#results");
+			$("<br><a href='../recipe/" + id + "'>" + name +"</a><br>").appendTo("#response-text");
 		}
+	}
+
+	function clearResponses(){
+		var node = $("#response-text");
+		node.empty();
 	}
 	$("#result").click(function(e){
 		console.log(this.id);

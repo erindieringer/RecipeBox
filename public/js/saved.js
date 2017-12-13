@@ -1,14 +1,15 @@
 $(function() {
-	var user = localStorage.user;
 	$( document ).ready(function(){
 			$(".button-collapse").sideNav();
 	});
 	$(".btn-floating").click(function(e){
 		// Gets ingredietn text for that button line
 		var ingredient = $("#p"+this.id ).text();
+        ingredient = ingredient.replace('/', '|');
 		addToGrocery(ingredient);
 	});
 	function addToGrocery(ingredient){
+        var user = localStorage.user;
 		console.log(ingredient);
     	$.ajax({
     		        type: "PUT",

@@ -11,7 +11,7 @@ exports.init = function(app) {
 	app.put("/lists/:user", deleteUserList);
 }
 
-
+// Gets the grocery list for a given user
 getList = function(req, res){
 	Lists.find({user: req.params.user}, function(err, list) {
 		    if (err)
@@ -21,6 +21,8 @@ getList = function(req, res){
 	});
 }
 
+// Creates an empty list for a user
+// This is called when a user is first createds
 createList = function(req, res){
 	var list = new Lists ({
 		user: mongoose.Types.ObjectId(req.params.user),
@@ -35,6 +37,7 @@ createList = function(req, res){
 	
 }
 
+// This adds an item to the grocery list
 updateList = function(req, res){
 	Lists.update({user: req.params.user}, 
 		 { $push: { itemList: req.params.item } },
@@ -48,6 +51,7 @@ updateList = function(req, res){
 
 }
 
+// Reset the itemList to an empty list, effectively deleting the contents
 deleteUserList = function(req, res){
 	Lists.findOneAndUpdate({user: req.params.user}, {$set:{itemList: []}}, {new: true}, function(err, doc){
     	if(err)

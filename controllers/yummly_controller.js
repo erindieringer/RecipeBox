@@ -3,6 +3,9 @@ exports.init = function(app) {
 	app.get("/recipe/:id", yummlyGet)
 }
 
+// Calls the Yummly API based on the unique YUMMLY recipeID
+// Then renders the showRecipe partial based on the result
+// The links for saved recipes and search recipes redirect to this URL
 yummlyGet = function(req, res){
 	var id = req.params.id
 	var baseURL = "http://api.yummly.com/v1/api/recipe/" 

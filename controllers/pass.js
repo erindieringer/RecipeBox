@@ -1,5 +1,5 @@
 // Code adapted from https://github.com/DanialK/Simple-Authentication/blob/master/pass.js
-
+// Uses Crypto module for encyrption of password
 /**
  * Module dependencies.
  */
